@@ -1,6 +1,8 @@
 # neuro
 
-A Clojure library designed to ... well, that part is up to you.
+Simple neural network in clojure. 
+This code is good for undersanding how neural network work. 
+This code in not optimised, and not for using in production.
 
 ## Usage
 
