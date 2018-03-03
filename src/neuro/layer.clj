@@ -1,8 +1,5 @@
 (ns neuro.layer
-  (:require [neuro.neuron :refer :all]
-            [uncomplicate.neanderthal.core :refer :all]
-            [uncomplicate.neanderthal.math :refer :all]
-            [uncomplicate.neanderthal.native :refer :all]))
+  (:require [neuro.neuron :refer :all]))
 
 (defn make-input-layer
   "make a new input layer with input vector x"
