@@ -1,7 +1,4 @@
-(ns neuro.neuron
-  (:require [uncomplicate.neanderthal.core :refer :all]
-            [uncomplicate.neanderthal.math :refer :all]
-            [uncomplicate.neanderthal.native :refer :all]))
+(ns neuro.neuron)
 
 ;; neuron
 
@@ -13,36 +10,17 @@
 (defn same
   "f(x)=x"
   [x]
-  (* 1 x))
+  (-> x))
 
 (defn one
   "f(x)=1"
   [x]
   (-> 1))
 
-(defn singm
-  "sigmoid function"
-  [x]
-  (/ (exp x) (+ (exp x) 1)))
-
-(defn dot-product5
-  "Dot-product with use Neanderthal library"
-  [x w]
-  (dot (dv x) (dv w)))
-
 (defn dot-product
   "Dot-product - idiomatic clojure"
   [xs ys]
   (reduce + (map * xs ys)))
-
-(defn dot-product3 ^double [^doubles xs ^doubles ys]
-  "Dot-product - primitive java arrays"
-              (let [n (alength xs)]
-                (loop [i 0 res 0.0]
-                  (if (< i n)
-                    (recur (inc i) (+ res (* (aget xs i)
-                                             (aget ys i))))
-                    res))))
 
 (defn output
   "output from neuron"
