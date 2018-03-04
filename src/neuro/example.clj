@@ -14,7 +14,7 @@
 (def xxx [1	1	1	1	0.918	0.87 0.615 -0.056	-0.144 0.047 -0.004344828	0.25 0.2])
 
 
-(def test-network (network x 56))
+(def test-network (network x 24))
 (def vladatt (atom test-network))
 
 
@@ -30,8 +30,7 @@
 
 
 (for [a (replicate 10 1)]
-  (train-network vladatt a 0.05)
-  )
+  (train-network vladatt a 0.05))
 
 (str (for [a (replicate 10 1)]
        (train-network vladatt a 0.05)
@@ -41,26 +40,10 @@
   (str
     (for [a (replicate 20 1)]
       (train-network vladatt a 0.05)
-      )
-    )
-  )
+      )))
 
 (reduce max (map :percent-abs (evaluation vladatt)))
 (:output (:output-layer (change-input-vec-nn @vladatt [0	0.71	0.94	1	0.897	0.816	0.612	0.003	-0.05	0.094	0.134827586	0.42	0.375])))
-
-
-(def bit-bucket-writer
-  (proxy [java.io.Writer] []
-    (write [buf] nil)
-    (close []    nil)
-    (flush []    nil)))
-
-(defmacro noprint
-  "Evaluates the given expressions with all printing to *out* silenced."
-  [& forms]
-  `(binding [*out* bit-bucket-writer]
-     ~@forms))
-
 
 
 
